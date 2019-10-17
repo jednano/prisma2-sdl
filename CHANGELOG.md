@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/jedmao/prisma2-sdl/compare/v1.0.0...v1.1.0) (2019-10-17)
+
+
+### Features
+
+* parse initial subset of SDL ([82ff536](https://github.com/jedmao/prisma2-sdl/commit/82ff536237f3cea3e26b5291d8df6e5305082754))
+
 # 1.0.0 (2019-10-17)
 
 
