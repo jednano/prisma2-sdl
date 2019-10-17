@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/jedmao/prisma2-sdl/compare/v1.1.0...v1.2.0) (2019-10-17)
+
+
+### Features
+
+* introduce prettify ([eea05ce](https://github.com/jedmao/prisma2-sdl/commit/eea05ce8fd0cc1daaa7ce63de7104fb70d2c91d3))
+
 # [1.1.0](https://github.com/jedmao/prisma2-sdl/compare/v1.0.0...v1.1.0) (2019-10-17)
 
 
