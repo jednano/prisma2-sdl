@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Parses a subset of the Prisma 2 schema definition language.",
   "license": "MIT",
-  "repository": "jedmao/node-starter",
+  "repository": "github:jedmao/prisma2-sdl",
   "author": "Jed Mao <jedmao@outlook.com> (https://github.com/jedmao)",
   "keywords": [
     "node",
@@ -124,6 +124,13 @@
       "source-map-support/register"
     ]
   },
+  "release": {
+    "extends": "@jedmao/semantic-release-npm-github-config",
+    "branch": "master"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "linez": "^4.1.4",
     "tslib": "^1"
@@ -132,6 +139,7 @@
     "@commitlint/cli": "^8",
     "@commitlint/config-conventional": "^8",
     "@istanbuljs/nyc-config-typescript": "^0",
+    "@jedmao/semantic-release-npm-github-config": "^1.0.7",
     "@typescript-eslint/eslint-plugin": "^2",
     "@typescript-eslint/parser": "^2",
     "ava": "^2",
@@ -147,6 +155,7 @@
     "nyc": "^14",
     "prettier": "^1",
     "rimraf": "^3",
+    "semantic-release": "^15.13.24",
     "ts-node": "^8",
     "tsconfig-paths": "^3",
     "typescript": "^3"
