@@ -1,24 +1,20 @@
-import * as linez from 'linez'
+import { readFileSync } from 'fs'
+import { join as pathJoin } from 'path'
+import { generate } from 'pegjs'
+
+import PrismaSchema from './@types/PrismaSchema'
+
+const parser = generate(
+	readFileSync(pathJoin(__dirname, 'grammar.pegjs')).toString(),
+)
 
 /**
- * @returns [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
+ * Parses a subset of the Prisma2 schema definition language.
  */
-export function parse(schema: string) {
-	if (
-		[null, undefined].includes(
-			// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-			// @ts-ignore
-			schema,
-		)
-	) {
-		return []
+export function parse(schema: string): PrismaSchema {
+	if (typeof schema === 'string' || [null, undefined].includes(schema)) {
+		return parser.parse(schema || '')
 	}
 
-	if (typeof schema !== 'string') {
-		throw new TypeError('expected a string')
-	}
-
-	return linez(schema || '').lines.reduce(prev => {
-		return prev
-	}, [])
+	throw new TypeError('expected a string')
 }

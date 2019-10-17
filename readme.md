@@ -13,7 +13,7 @@
 
 <!-- markdownlint-disable commands-show-output -->
 
-Parses a subset of the Prisma 2 schema definition language
+Parses a subset of the Prisma 2 schema definition language.
 
 ## Scripts
 
