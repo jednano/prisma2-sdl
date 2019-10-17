@@ -1,0 +1,152 @@
+{
+  "name": "@jedmao/prisma2-sdl",
+  "version": "0.0.0",
+  "description": "Parses a subset of the Prisma 2 schema definition language.",
+  "license": "MIT",
+  "repository": "jedmao/node-starter",
+  "author": "Jed Mao <jedmao@outlook.com> (https://github.com/jedmao)",
+  "keywords": [
+    "node",
+    "typescript",
+    "prisma",
+    "prisma2",
+    "sdl",
+    "schema",
+    "definition",
+    "language",
+    "parser",
+    "ast",
+    "pretty"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint src/**/*.ts",
+    "test": "npm run lint && ava --watch",
+    "precover": "rimraf coverage",
+    "cover": "npm run lint && nyc ava",
+    "commit": "git-cz"
+  },
+  "files": [
+    "dist"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "tsc --noEmit && npm run cover"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "xo/esnext",
+      "prettier",
+      "xo-typescript",
+      "prettier/@typescript-eslint"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": "off"
+    },
+    "overrides": [
+      {
+        "files": "src/**/*.test.ts",
+        "rules": {
+          "@typescript-eslint/no-explicit-any": "off"
+        }
+      }
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "proseWrap": "always",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "src/**/*.test.ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ],
+    "sources": [
+      "src/**/*.ts",
+      "!src/**/*.test.ts"
+    ]
+  },
+  "nyc": {
+    "all": true,
+    "check-coverage": true,
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ]
+  },
+  "dependencies": {
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8",
+    "@commitlint/config-conventional": "^8",
+    "@istanbuljs/nyc-config-typescript": "^0",
+    "@typescript-eslint/eslint-plugin": "^2",
+    "@typescript-eslint/parser": "^2",
+    "ava": "^2",
+    "commitizen": "^4",
+    "cz-conventional-changelog": "^3",
+    "eslint": "^6",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-xo": "^0",
+    "eslint-config-xo-typescript": "^0",
+    "eslint-plugin-prettier": "^3",
+    "husky": "^3",
+    "lint-staged": "^9",
+    "nyc": "^14",
+    "prettier": "^1",
+    "rimraf": "^3",
+    "ts-node": "^8",
+    "tsconfig-paths": "^3",
+    "typescript": "^3"
+  }
+}
