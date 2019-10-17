@@ -60,6 +60,25 @@ test('parse(42) throws a TypeError', t => {
 	})
 }
 
+// {
+// 	const bonus = readFixture('bonus')
+// 	const bonusAST = parse(bonus)
+
+// 	test('parse(bonus) returns expected AST', t => {
+// 		t.snapshot(bonusAST)
+// 	})
+
+// 	test('parse(uglyBonus) returns same AST', t => {
+// 		t.deepEqual(parse(readFixture('uglyBonus')), bonusAST)
+// 	})
+
+// 	test('prettify(bonusAST) returns properly-formatted text', t => {
+// 		t.is(prettify(bonusAST), bonus)
+// 	})
+// }
+
 function readFixture(name: string) {
-	return readFileSync(pathJoin(__dirname, 'fixtures', name)).toString()
+	return readFileSync(
+		pathJoin(__dirname, 'fixtures', `${name}.prisma`),
+	).toString()
 }

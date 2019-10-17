@@ -34,6 +34,8 @@ Field =
 
 DataType = 'String' / 'Boolean' / 'Int' / 'Float' / 'DateTime'
 
+String = "'" Identifier "'" / '"' Identifier '"'
+
 FieldAttribute = '@'name:'id' {
 	return {
 		type: 'FieldAttribute',
