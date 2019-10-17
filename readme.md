@@ -13,7 +13,46 @@
 
 <!-- markdownlint-disable commands-show-output -->
 
-Parses a subset of the Prisma 2 schema definition language.
+Parses a subset of the
+[Prisma2 Schema Language (PSL)](https://github.com/prisma/specs/tree/master/schema).
+
+## Installation
+
+```sh
+npm install @jedmao/prisma2-sdl
+```
+
+## Usage
+
+```ts
+import { parse, prettify } from '@jedmao/prisma2-sdl'
+import { readFileSync } from 'fs'
+
+const ast = parse(readFileSync('schema.prisma'))
+console.log(prettify(ast))
+```
+
+## Limitations
+
+This library only parses a subset of the
+[Prisma2 Schema Language (PSL)](https://github.com/prisma/specs/tree/master/schema).
+
+```prisma
+model User {
+  id     Int     @id
+  name   String
+  email  String
+  age    Int?
+  posts  Post[]
+}
+
+model Post {
+  id       Int     @id
+  title    String
+  content  String
+  author   User
+}
+```
 
 ## Scripts
 
