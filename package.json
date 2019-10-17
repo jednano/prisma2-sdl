@@ -1,6 +1,6 @@
 {
   "name": "@jedmao/prisma2-sdl",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Parses a subset of the Prisma 2 schema definition language.",
   "license": "MIT",
   "repository": "github:jedmao/prisma2-sdl",
