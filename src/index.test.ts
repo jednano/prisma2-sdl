@@ -1,6 +1,8 @@
 import test from 'ava'
+import { readFileSync } from 'fs'
+import { join as pathJoin } from 'path'
 
-import { parse } from '.'
+import { parse, prettify } from '.'
 
 test('parse() returns empty blocks', t => {
 	t.snapshot(
@@ -27,20 +29,37 @@ test('parse(42) throws a TypeError', t => {
 	}, TypeError)
 })
 
-test('parse(schema) returns expected AST', t => {
-	const schema = `model User {
-	id     Int @id
-	name   String
-	email  String
-	age    Int?
-	posts  Post[]
+{
+	const schema = readFixture('schema')
+	const ast = parse(schema)
+
+	test('parse(schema) returns expected AST', t => {
+		t.snapshot(ast)
+	})
+
+	test('parse(uglySchema) returns same AST', t => {
+		t.deepEqual(parse(readFixture('uglySchema')), ast)
+	})
+
+	test('prettify() throws a TypeError', t => {
+		t.throws(() => {
+			// @ts-ignore
+			prettify()
+		}, TypeError)
+	})
+
+	test('prettify({}) throws a TypeError', t => {
+		t.throws(() => {
+			// @ts-ignore
+			prettify({})
+		}, TypeError)
+	})
+
+	test('prettify(ast) returns properly-formatted text', t => {
+		t.is(prettify(ast), schema)
+	})
 }
 
-model Post {
-	id       Int @id
-	title    String
-	content  String
-	author   User
-}`
-	t.snapshot(parse(schema))
-})
+function readFixture(name: string) {
+	return readFileSync(pathJoin(__dirname, 'fixtures', name)).toString()
+}
