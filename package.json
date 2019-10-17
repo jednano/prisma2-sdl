@@ -81,6 +81,7 @@
       {
         "files": "src/**/*.test.ts",
         "rules": {
+          "@typescript-eslint/ban-ts-ignore": "off",
           "@typescript-eslint/no-explicit-any": "off"
         }
       }
@@ -124,6 +125,7 @@
     ]
   },
   "dependencies": {
+    "linez": "^4.1.4",
     "tslib": "^1"
   },
   "devDependencies": {
